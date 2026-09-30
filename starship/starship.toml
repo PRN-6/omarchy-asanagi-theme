@@ -1,0 +1,52 @@
+# -----------------------------------------------------
+# Asanagi Umi Theme - Starship Prompt
+# -----------------------------------------------------
+
+format = """
+[░▒▓](#b872e8)\
+[ 🌸 $directory ](bg:#b872e8 fg:#130f1b bold)\
+[](fg:#b872e8 bg:#818cf8)\
+[ $git_branch$git_status ](bg:#818cf8 fg:#130f1b)\
+[](fg:#818cf8 bg:#1e182b)\
+[ $nodejs$rust$golang$python ](bg:#1e182b fg:#ddd6eb)\
+[](fg:#1e182b)\
+$character"""
+
+[directory]
+style = "bg:#b872e8 fg:#130f1b"
+format = "[$path]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+style = "bg:#818cf8 fg:#130f1b"
+symbol = " "
+format = "[$symbol$branch]($style)"
+
+[git_status]
+style = "bg:#818cf8 fg:#130f1b"
+format = "[$all_status$ahead_behind]($style)"
+
+[nodejs]
+symbol = " "
+style = "bg:#1e182b fg:#4ade80"
+format = "[$symbol($version) ]($style)"
+
+[rust]
+symbol = "󱘗 "
+style = "bg:#1e182b fg:#fb923c"
+format = "[$symbol($version) ]($style)"
+
+[golang]
+symbol = " "
+style = "bg:#1e182b fg:#38bdf8"
+format = "[$symbol($version) ]($style)"
+
+[python]
+symbol = " "
+style = "bg:#1e182b fg:#facc15"
+format = "[$symbol($version) ]($style)"
+
+[character]
+success_symbol = "[❯](bold #b872e8)"
+error_symbol = "[❯](bold #f43f6e)"

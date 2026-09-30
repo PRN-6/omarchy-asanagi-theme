@@ -1,0 +1,32 @@
+# -----------------------------------------------------
+# Asanagi Umi Theme - Ghostty Terminal
+# -----------------------------------------------------
+
+theme = asanagi
+palette = 0=#191325
+palette = 1=#f43f6e
+palette = 2=#4ade80
+palette = 3=#facc15
+palette = 4=#818cf8
+palette = 5=#c084fc
+palette = 6=#38bdf8
+palette = 7=#e2daf0
+palette = 8=#4d3e68
+palette = 9=#fb7185
+palette = 10=#86efac
+palette = 11=#fde047
+palette = 12=#a5b4fc
+palette = 13=#e879f9
+palette = 14=#7dd3fc
+palette = 15=#ffffff
+
+background = #130f1b
+foreground = #ddd6eb
+cursor-color = #b872e8
+selection-background = #3b2c52
+selection-foreground = #f8f5fd
+
+background-opacity = 0.92
+background-blur-radius = 32
+font-family = JetBrainsMono Nerd Font
+font-size = 12

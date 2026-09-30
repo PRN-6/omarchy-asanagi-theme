@@ -1,0 +1,50 @@
+# ==============================================================================
+# Asanagi Umi (朝凪海) Theme - Omarchy Colors Specification
+# Extracted directly from Umi Asanagi's Character Design & Wallpaper Palette:
+# - Hair & Navy Base: Deep Plum Charcoal & Obsidian
+# - Bangs Highlight & UI: Electric Orchid Purple & Violet
+# - Eyes Accent: Luminous Ruby Crimson & Rose Red
+# - Uniform Ribbon & Shark Accent: Sky Cyan & Soft Periwinkle
+# - Uniform & Highlights: Soft Lavender Silver
+# ==============================================================================
+
+mode = "dark"
+accent = "#a855f7"
+selection = "#3b1d5c"
+muted = "#6b5887"
+
+# Background Steps (From Deepest Charcoal Obsidian to Soft Plum Slate)
+background = "#13091f"
+dark_background = "#0d0615"
+darker_background = "#08030d"
+lighter_background = "#1f1033"
+
+# Foreground Steps (From Muted Mauve to Pure Lavender Glow)
+foreground = "#e9d5ff"
+dark_foreground = "#9d8ba7"
+light_foreground = "#f3e8ff"
+bright_foreground = "#faf5ff"
+
+# Base ANSI Colors (Normal)
+black = "#190c29"
+red = "#f43f5e"
+orange = "#fb923c"
+yellow = "#facc15"
+green = "#4ade80"
+cyan = "#38bdf8"
+blue = "#818cf8"
+magenta = "#c084fc"
+brown = "#a22c7b"
+white = "#e9d5ff"
+
+# Bright ANSI Colors
+bright_black = "#4c2c6e"
+bright_red = "#ff4d6d"
+bright_orange = "#fdba74"
+bright_yellow = "#fde047"
+bright_green = "#86efac"
+bright_cyan = "#7dd3fc"
+bright_blue = "#a5b4fc"
+bright_magenta = "#e879f9"
+bright_brown = "#bd358d"
+bright_white = "#ffffff"

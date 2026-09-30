@@ -1,0 +1,133 @@
+/* -----------------------------------------------------
+ * Asanagi Umi Theme - Waybar CSS
+ * ----------------------------------------------------- */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+window#waybar {
+    background-color: rgba(19, 9, 31, 0.85);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.28);
+    color: #e9d5ff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+#workspaces {
+    background: rgba(31, 16, 51, 0.68);
+    margin: 4px 6px;
+    padding: 0 4px;
+    border-radius: 10px;
+    border: 1px solid rgba(168, 85, 247, 0.22);
+}
+
+#workspaces button {
+    padding: 2px 8px;
+    color: #9d8ba7;
+    border-radius: 8px;
+    margin: 2px 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+    background: rgba(168, 85, 247, 0.22);
+    color: #f3e8ff;
+}
+
+#workspaces button.active {
+    background: linear-gradient(135deg, #a855f7, #f43f6e);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(168, 85, 247, 0.45);
+}
+
+#workspaces button.urgent {
+    background-color: #f43f6e;
+    color: #ffffff;
+}
+
+#window {
+    color: #c084fc;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#custom-power {
+    padding: 2px 10px;
+    margin: 4px 3px;
+    color: #e9d5ff;
+    background: rgba(31, 16, 51, 0.72);
+    border-radius: 8px;
+    border: 1px solid rgba(168, 85, 247, 0.18);
+}
+
+#clock {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(244, 63, 110, 0.22));
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    color: #faf5ff;
+    font-weight: 800;
+}
+
+#pulseaudio {
+    color: #818cf8;
+}
+
+#pulseaudio.muted {
+    background-color: #3b1d5c;
+    color: #9d8ba7;
+}
+
+#network {
+    color: #38bdf8;
+}
+
+#network.disconnected {
+    color: #f43f6e;
+}
+
+#battery {
+    color: #4ade80;
+}
+
+#battery.charging, #battery.plugged {
+    color: #86efac;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f43f6e;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#custom-power {
+    background: linear-gradient(135deg, #f43f6e, #a855f7);
+    color: #ffffff;
+    padding: 2px 12px;
+    border-radius: 8px;
+    margin-right: 8px;
+}
+
+#custom-power:hover {
+    box-shadow: 0 0 14px rgba(244, 63, 110, 0.65);
+}

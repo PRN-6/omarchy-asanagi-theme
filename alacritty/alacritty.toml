@@ -1,0 +1,40 @@
+# -----------------------------------------------------
+# Asanagi Umi Theme - Alacritty Terminal
+# -----------------------------------------------------
+
+[colors.primary]
+background = "#130f1b"
+foreground = "#ddd6eb"
+
+[colors.cursor]
+text = "#130f1b"
+cursor = "#b872e8"
+
+[colors.selection]
+text = "#f8f5fd"
+background = "#3b2c52"
+
+[colors.normal]
+black   = "#191325"
+red     = "#f43f6e"
+green   = "#4ade80"
+yellow  = "#facc15"
+blue    = "#818cf8"
+magenta = "#c084fc"
+cyan    = "#38bdf8"
+white   = "#e2daf0"
+
+[colors.bright]
+black   = "#4d3e68"
+red     = "#fb7185"
+green   = "#86efac"
+yellow  = "#fde047"
+blue    = "#a5b4fc"
+magenta = "#e879f9"
+cyan    = "#7dd3fc"
+white   = "#ffffff"
+
+[window]
+opacity = 0.92
+blur = true
+padding = { x = 12, y = 12 }
