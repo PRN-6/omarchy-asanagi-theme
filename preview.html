@@ -6,7 +6,7 @@
     <title>Asanagi Umi - Omarchy Dark Minimalist Theme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #13091f;
@@ -25,6 +25,7 @@
             --green: #4ade80;
             --yellow: #facc15;
             --blue: #818cf8;
+            --border-subtle: rgba(168, 85, 247, 0.22);
         }
 
         * {
@@ -45,20 +46,36 @@
 
         /* Top Header */
         header {
-            background: rgba(19, 9, 31, 0.9);
+            background: rgba(19, 9, 31, 0.92);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-            padding: 10px 24px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 28px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            object-fit: cover;
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
         .brand h1 {
-            font-size: 1.05rem;
+            font-size: 1.15rem;
             font-weight: 700;
             letter-spacing: 0.5px;
             background: linear-gradient(135deg, #faf5ff, var(--accent));
@@ -75,31 +92,40 @@
             display: flex;
             gap: 16px;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .toggle-group {
             display: flex;
             background: var(--bg-dark);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            border-radius: 6px;
-            padding: 2px;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 3px;
         }
 
         .toggle-btn {
             background: transparent;
             border: none;
             color: var(--fg-muted);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.78rem;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .toggle-btn:hover {
+            color: var(--fg-bright);
         }
 
         .toggle-btn.active {
             background: var(--accent);
             color: #ffffff;
+            box-shadow: 0 0 12px var(--accent-glow);
         }
 
         .wall-selector {
@@ -130,18 +156,20 @@
         /* Desktop Stage */
         .desktop-stage {
             flex: 1;
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
+            max-width: 1380px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .sim-desktop {
-            flex: 1;
-            min-height: 580px;
+            min-height: 600px;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
             background-size: cover;
             background-position: center;
             display: flex;
@@ -152,15 +180,15 @@
 
         /* Minimalist Text-Only Waybar */
         .sim-waybar {
-            height: 32px;
+            height: 34px;
             background: rgba(19, 9, 31, 0.88);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.22);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 12px;
-            font-family: 'Fira Code', monospace;
+            padding: 0 14px;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             font-size: 11px;
             z-index: 10;
         }
@@ -168,24 +196,31 @@
         .waybar-group {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
 
         .ws-num {
-            padding: 2px 7px;
+            padding: 2px 8px;
             border-radius: 4px;
             color: var(--fg-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .ws-num:hover {
+            color: var(--fg);
         }
 
         .ws-num.active {
             background: var(--accent);
             color: #ffffff;
+            box-shadow: 0 0 8px var(--accent-glow);
         }
 
         .bar-item {
             background: rgba(31, 16, 51, 0.7);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            padding: 2px 8px;
+            border: 1px solid rgba(168, 85, 247, 0.18);
+            padding: 2px 9px;
             border-radius: 4px;
             color: var(--fg);
         }
@@ -198,49 +233,89 @@
         /* Windows Canvas */
         .windows-grid {
             flex: 1;
-            padding: 14px;
+            padding: 18px;
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 14px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .windows-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .sim-window {
             background: rgba(19, 9, 31, 0.94);
-            backdrop-filter: blur(20px);
-            border-radius: 8px;
+            backdrop-filter: blur(22px);
+            border-radius: 10px;
             border: 1px solid rgba(168, 85, 247, 0.25);
-            box-shadow: 0 10px 25px rgba(8, 3, 13, 0.7);
+            box-shadow: 0 12px 30px rgba(8, 3, 13, 0.75);
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            transition: all 0.2s ease;
         }
 
         .sim-window.active {
             border-color: var(--accent);
-            box-shadow: 0 0 16px var(--accent-glow);
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
         .win-titlebar {
-            background: rgba(31, 16, 51, 0.75);
-            padding: 6px 12px;
+            background: rgba(31, 16, 51, 0.8);
+            padding: 8px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.72rem;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.18);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.74rem;
             color: var(--fg-muted);
         }
 
+        .win-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .win-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-close { background: var(--ruby); }
+        .dot-min { background: var(--yellow); }
+        .dot-max { background: var(--green); }
+
         .win-content {
             flex: 1;
-            padding: 14px;
-            font-family: 'Fira Code', monospace;
+            padding: 16px;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             font-size: 12.5px;
             line-height: 1.6;
         }
 
         /* Fastfetch with Avatar */
+        .fetch-box {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .fetch-avatar {
+            width: 105px;
+            height: 105px;
+            border-radius: 8px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 14px var(--accent-glow);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
         .fetch-line {
             display: flex;
             gap: 12px;
@@ -249,7 +324,7 @@
 
         .fetch-key {
             color: var(--accent);
-            width: 45px;
+            width: 48px;
             font-weight: 600;
         }
 
@@ -259,141 +334,212 @@
 
         .color-palette-bar {
             display: flex;
-            gap: 5px;
-            margin-top: 12px;
+            gap: 6px;
+            margin-top: 14px;
         }
 
         .swatch {
-            width: 14px;
-            height: 14px;
-            border-radius: 3px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
         }
 
         /* BTOP Monitor */
         .btop-stat {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .btop-label {
             display: flex;
             justify-content: space-between;
             font-size: 0.75rem;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
             color: var(--fg-bright);
         }
 
         .btop-bar {
-            height: 6px;
+            height: 7px;
             background: var(--bg-lighter);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
         .btop-fill {
             height: 100%;
-            border-radius: 3px;
+            border-radius: 4px;
+            transition: width 0.5s ease;
         }
 
-        .fill-cpu { width: 38%; background: var(--accent); }
-        .fill-mem { width: 55%; background: var(--ruby); }
+        .fill-cpu { width: 38%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+        .fill-mem { width: 55%; background: var(--ruby); box-shadow: 0 0 8px var(--ruby-glow); }
         .fill-net { width: 28%; background: var(--cyan); }
 
-        /* Lock Screen View */
+        /* Lock Screen View (Hyprlock Simulation) */
         .lockscreen-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(19, 9, 31, 0.75);
+            background: rgba(19, 9, 31, 0.78);
             backdrop-filter: blur(28px);
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 50;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(1.02); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .lock-clock {
-            font-size: 4.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
             font-weight: 800;
             color: var(--fg-bright);
             letter-spacing: 2px;
-            text-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
+            text-shadow: 0 4px 25px rgba(168, 85, 247, 0.55);
             line-height: 1;
         }
 
         .lock-date {
+            font-family: 'JetBrains Mono', monospace;
             font-size: 1.1rem;
             color: var(--accent);
             font-weight: 600;
-            margin-top: 8px;
+            margin-top: 10px;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+        .lock-avatar-container {
+            position: relative;
             margin-bottom: 24px;
         }
 
         .lock-avatar {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 3px solid var(--accent);
-            box-shadow: 0 0 24px var(--accent-glow);
+            box-shadow: 0 0 28px var(--accent-glow);
             object-fit: cover;
-            margin-bottom: 20px;
+            display: block;
         }
 
-        .lock-input {
-            width: 260px;
-            background: rgba(31, 16, 51, 0.85);
+        .lock-input-box {
+            position: relative;
+            width: 280px;
+        }
+
+        .lock-input-field {
+            width: 100%;
+            background: rgba(31, 16, 51, 0.9);
             border: 2px solid var(--accent);
-            border-radius: 25px;
-            padding: 10px 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 24px;
+            padding: 12px 20px;
+            color: var(--fg-bright);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            text-align: center;
+            outline: none;
+            box-shadow: 0 4px 20px rgba(8, 3, 13, 0.8), 0 0 10px rgba(168, 85, 247, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .lock-input-field:focus {
+            border-color: #c084fc;
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .lock-input-field::placeholder {
             color: var(--fg-muted);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            font-style: italic;
+        }
+
+        .lock-error-msg {
+            color: var(--ruby);
+            font-size: 0.78rem;
+            margin-top: 8px;
+            text-align: center;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .lock-error-msg.visible {
+            opacity: 1;
         }
 
         .lock-sub {
-            margin-top: 30px;
-            font-size: 0.75rem;
+            margin-top: 24px;
+            font-size: 0.78rem;
             color: var(--fg-muted);
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .lock-hint {
+            margin-top: 8px;
+            font-size: 0.72rem;
+            color: rgba(157, 139, 167, 0.7);
+        }
+
+        /* Shake animation for invalid password test */
+        .shake {
+            animation: shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
         }
 
         /* Specs section */
         .theme-specs {
             background: var(--bg-base);
-            border-radius: 10px;
-            border: 1px solid rgba(168, 85, 247, 0.2);
-            padding: 16px 20px;
-            margin-top: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+            padding: 20px 24px;
+            margin-top: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         .theme-specs h2 {
-            font-size: 1.05rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 14px;
             color: var(--fg-bright);
         }
 
         .swatch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
         }
 
         .swatch-card {
             background: var(--bg-dark);
-            border: 1px solid rgba(168, 85, 247, 0.15);
-            padding: 8px 10px;
-            border-radius: 6px;
+            border: 1px solid rgba(168, 85, 247, 0.18);
+            padding: 10px 12px;
+            border-radius: 8px;
             display: flex;
             flex-direction: column;
             gap: 4px;
+            transition: transform 0.2s;
+        }
+
+        .swatch-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
         }
 
         .swatch-color {
-            height: 24px;
-            border-radius: 4px;
+            height: 26px;
+            border-radius: 5px;
         }
 
         .swatch-name {
@@ -402,7 +548,7 @@
         }
 
         .swatch-hex {
-            font-family: 'Fira Code', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.78rem;
             color: var(--fg-bright);
             font-weight: 600;
@@ -410,16 +556,34 @@
 
         .install-box {
             background: var(--bg-dark);
-            border: 1px dashed rgba(168, 85, 247, 0.35);
-            border-radius: 6px;
-            padding: 10px 14px;
-            margin-top: 14px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
+            border: 1px dashed rgba(168, 85, 247, 0.4);
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin-top: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.86rem;
             color: var(--accent);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .copy-btn {
+            background: var(--bg-lighter);
+            border: 1px solid var(--accent);
+            color: var(--fg-bright);
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent);
+            color: #fff;
         }
     </style>
 </head>
@@ -427,14 +591,17 @@
 
     <header>
         <div class="brand">
-            <h1>Asanagi Umi (朝凪海)</h1>
-            <p>Minimalist Dark Omarchy Theme</p>
+            <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="brand-avatar">
+            <div>
+                <h1>Asanagi Umi (朝凪海)</h1>
+                <p>Minimalist Dark Omarchy Theme</p>
+            </div>
         </div>
 
         <div class="controls">
             <div class="toggle-group">
-                <button class="toggle-btn active" id="btnDesktop" onclick="showView('desktop')">Desktop</button>
-                <button class="toggle-btn" id="btnLock" onclick="showView('lockscreen')">Lock Screen</button>
+                <button class="toggle-btn active" id="btnDesktop" onclick="showView('desktop')">🖥️ Desktop</button>
+                <button class="toggle-btn" id="btnLock" onclick="showView('lockscreen')">🔒 Lock Screen</button>
             </div>
 
             <div class="wall-selector">
@@ -462,14 +629,14 @@
                 </div>
 
                 <div class="waybar-group">
-                    <span class="bar-item clock">21:30  •  Wed, Sep 30</span>
+                    <span class="bar-item clock" id="waybarClock">--:--  •  ---, --- --</span>
                 </div>
 
                 <div class="waybar-group">
                     <span class="bar-item" style="color: var(--blue);">vol 78%</span>
                     <span class="bar-item" style="color: var(--cyan);">wifi</span>
                     <span class="bar-item" style="color: var(--green);">bat 98%</span>
-                    <span class="bar-item" style="color: var(--ruby);">off</span>
+                    <span class="bar-item" style="color: var(--ruby); cursor: pointer;" onclick="showView('lockscreen')">lock</span>
                 </div>
             </div>
 
@@ -479,35 +646,42 @@
                 <!-- Terminal Window -->
                 <div class="sim-window active">
                     <div class="win-titlebar">
+                        <div class="win-controls">
+                            <span class="win-dot dot-close"></span>
+                            <span class="win-dot dot-min"></span>
+                            <span class="win-dot dot-max"></span>
+                        </div>
                         <span>term / fastfetch</span>
                         <span>asanagi</span>
                     </div>
                     <div class="win-content">
-                        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-                            <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" style="width: 105px; height: 105px; border-radius: 8px; border: 2px solid var(--accent); box-shadow: 0 0 12px var(--accent-glow); object-fit: cover;">
+                        <div class="fetch-box">
+                            <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="fetch-avatar">
                             <div>
-                                <div style="color: var(--accent); font-weight: 600; margin-bottom: 4px;">prins @ omarchy</div>
-                                <div class="fetch-line"><span class="fetch-key">os</span><span class="fetch-val">Omarchy Linux</span></div>
-                                <div class="fetch-line"><span class="fetch-key">wm</span><span class="fetch-val">Hyprland</span></div>
-                                <div class="fetch-line"><span class="fetch-key">term</span><span class="fetch-val">Kitty / Ghostty</span></div>
-                                <div class="fetch-line"><span class="fetch-key">theme</span><span class="fetch-val" style="color: var(--accent);">asanagi</span></div>
-                                <div class="fetch-line"><span class="fetch-key">up</span><span class="fetch-val">3h 42m</span></div>
+                                <div style="color: var(--accent); font-weight: 700; margin-bottom: 4px; font-size: 13.5px;">prins <span style="color: var(--fg-muted);">@</span> omarchy</div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #a855f7;">os  </span><span class="fetch-val">Omarchy Linux x86_64</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #818cf8;">krn </span><span class="fetch-val">Linux 6.10.10-arch1-1</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #f43f6e;">wm  </span><span class="fetch-val">Hyprland (Wayland)</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #38bdf8;">sh  </span><span class="fetch-val">zsh 5.9</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #4ade80;">term</span><span class="fetch-val">Kitty / Ghostty</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #facc15;">mem </span><span class="fetch-val">4.21 GiB / 15.48 GiB (27%)</span></div>
+                                <div class="fetch-line"><span class="fetch-key" style="color: #e879f9;">up  </span><span class="fetch-val">3 hours, 42 mins</span></div>
                             </div>
                         </div>
 
                         <div class="color-palette-bar">
-                            <div class="swatch" style="background: #190c29;"></div>
-                            <div class="swatch" style="background: #f43f6e;"></div>
-                            <div class="swatch" style="background: #4ade80;"></div>
-                            <div class="swatch" style="background: #facc15;"></div>
-                            <div class="swatch" style="background: #818cf8;"></div>
-                            <div class="swatch" style="background: #c084fc;"></div>
-                            <div class="swatch" style="background: #38bdf8;"></div>
-                            <div class="swatch" style="background: #e9d5ff;"></div>
+                            <div class="swatch" style="background: #190c29;" title="black"></div>
+                            <div class="swatch" style="background: #f43f5e;" title="red"></div>
+                            <div class="swatch" style="background: #4ade80;" title="green"></div>
+                            <div class="swatch" style="background: #facc15;" title="yellow"></div>
+                            <div class="swatch" style="background: #818cf8;" title="blue"></div>
+                            <div class="swatch" style="background: #c084fc;" title="magenta"></div>
+                            <div class="swatch" style="background: #38bdf8;" title="cyan"></div>
+                            <div class="swatch" style="background: #e9d5ff;" title="white"></div>
                         </div>
 
-                        <div style="margin-top: 14px; color: var(--fg-muted); font-size: 11px;">
-                            ~/omarchy-theme on main <span style="color: var(--accent);">❯</span>
+                        <div style="margin-top: 14px; color: var(--fg-muted); font-size: 11.5px;">
+                            ~/omarchy-theme on <span style="color: #818cf8;">main</span> <span style="color: var(--accent); font-weight: bold;">❯</span>
                         </div>
                     </div>
                 </div>
@@ -515,14 +689,19 @@
                 <!-- Btop Window -->
                 <div class="sim-window">
                     <div class="win-titlebar">
+                        <div class="win-controls">
+                            <span class="win-dot dot-close"></span>
+                            <span class="win-dot dot-min"></span>
+                            <span class="win-dot dot-max"></span>
+                        </div>
                         <span>btop / monitor</span>
                         <span>4.2 GHz</span>
                     </div>
                     <div class="win-content">
                         <div class="btop-stat">
                             <div class="btop-label">
-                                <span>cpu</span>
-                                <span style="color: var(--accent);">38%</span>
+                                <span>cpu (8 cores)</span>
+                                <span style="color: var(--accent); font-weight: 600;">38%</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-cpu"></div></div>
                         </div>
@@ -530,21 +709,22 @@
                         <div class="btop-stat">
                             <div class="btop-label">
                                 <span>mem (8.8G / 16G)</span>
-                                <span style="color: var(--ruby);">55%</span>
+                                <span style="color: var(--ruby); font-weight: 600;">55%</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-mem"></div></div>
                         </div>
 
                         <div class="btop-stat">
                             <div class="btop-label">
-                                <span>net</span>
-                                <span style="color: var(--cyan);">↓ 12M  ↑ 1.8M</span>
+                                <span>net (wlan0)</span>
+                                <span style="color: var(--cyan); font-weight: 600;">↓ 12M  ↑ 1.8M</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-net"></div></div>
                         </div>
 
-                        <div style="margin-top: 10px; font-size: 0.72rem; color: var(--fg-muted);">
-                            proc: hyprland • waybar • kitty
+                        <div style="margin-top: 14px; font-size: 0.72rem; color: var(--fg-muted); line-height: 1.5;">
+                            <div><b>Active Tasks:</b> hyprland • waybar • kitty • fastfetch</div>
+                            <div style="color: #818cf8; margin-top: 4px;">Theme: asanagi.theme (Btop)</div>
                         </div>
                     </div>
                 </div>
@@ -553,18 +733,24 @@
 
             <!-- Hyprlock Lock Screen Simulation -->
             <div class="lockscreen-overlay" id="lockScreen">
-                <div class="lock-clock">21:30</div>
-                <div class="lock-date">Wednesday, September 30</div>
-                <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="lock-avatar">
-                <div class="lock-input">•••••••••••••</div>
+                <div class="lock-clock" id="lockClock">--:--</div>
+                <div class="lock-date" id="lockDate">----------, --------- --</div>
+                <div class="lock-avatar-container">
+                    <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="lock-avatar">
+                </div>
+                <div class="lock-input-box" id="inputWrapper">
+                    <input type="password" class="lock-input-field" id="lockPasswordInput" placeholder="Enter password..." autocomplete="off">
+                    <div class="lock-error-msg" id="lockErrorMsg">Authentication failed (1)</div>
+                </div>
                 <div class="lock-sub">朝凪海 • Asanagi Umi</div>
+                <div class="lock-hint">💡 Type anything and press Enter to simulate unlock</div>
             </div>
 
         </div>
 
         <!-- Palette Specs -->
         <div class="theme-specs">
-            <h2>Palette Reference (colors.toml)</h2>
+            <h2>Character Color Mapping (colors.toml)</h2>
             <div class="swatch-grid">
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #13091f;"></div>
@@ -609,14 +795,43 @@
             </div>
 
             <div class="install-box">
-                <span>Install via Omarchy Terminal:</span>
-                <code>omarchy-theme-install https://github.com/PRN-6/omarchy-asanagi-theme</code>
+                <div>
+                    <span style="color: var(--fg-muted); margin-right: 8px;">Install via Omarchy Terminal:</span>
+                    <code id="installCommand">omarchy-theme-install https://github.com/PRN-6/omarchy-asanagi-theme</code>
+                </div>
+                <button class="copy-btn" onclick="copyCommand()">📋 Copy Command</button>
             </div>
         </div>
 
     </div>
 
     <script>
+        function updateClocks() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const timeStr = `${hours}:${minutes}`;
+
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const fullDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const fullMonths = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+            const waybarDateStr = `${timeStr}  •  ${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+            const lockDateStr = `${fullDays[now.getDay()]}, ${fullMonths[now.getMonth()]} ${now.getDate()}`;
+
+            const waybarClock = document.getElementById('waybarClock');
+            const lockClock = document.getElementById('lockClock');
+            const lockDate = document.getElementById('lockDate');
+
+            if (waybarClock) waybarClock.textContent = waybarDateStr;
+            if (lockClock) lockClock.textContent = timeStr;
+            if (lockDate) lockDate.textContent = lockDateStr;
+        }
+
+        setInterval(updateClocks, 1000);
+        updateClocks();
+
         function setWallpaper(url, btn) {
             document.getElementById('desktopView').style.backgroundImage = `url('${url}')`;
             document.querySelectorAll('.wall-btn').forEach(b => b.classList.remove('active'));
@@ -627,16 +842,62 @@
             const lock = document.getElementById('lockScreen');
             const btnDesktop = document.getElementById('btnDesktop');
             const btnLock = document.getElementById('btnLock');
+            const lockInput = document.getElementById('lockPasswordInput');
 
             if (view === 'lockscreen') {
                 lock.style.display = 'flex';
                 btnLock.classList.add('active');
                 btnDesktop.classList.remove('active');
+                if (lockInput) {
+                    lockInput.value = '';
+                    setTimeout(() => lockInput.focus(), 100);
+                }
             } else {
                 lock.style.display = 'none';
                 btnDesktop.classList.add('active');
                 btnLock.classList.remove('active');
             }
+        }
+
+        // Interactive Lock Screen password unlock test
+        const lockInput = document.getElementById('lockPasswordInput');
+        const inputWrapper = document.getElementById('inputWrapper');
+        const lockErrorMsg = document.getElementById('lockErrorMsg');
+        let attempts = 0;
+
+        if (lockInput) {
+            lockInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    if (lockInput.value.trim().length > 0) {
+                        // Success unlock
+                        lockErrorMsg.classList.remove('visible');
+                        showView('desktop');
+                    } else {
+                        // Fail simulation
+                        attempts++;
+                        lockErrorMsg.textContent = `Authentication failed (${attempts})`;
+                        lockErrorMsg.classList.add('visible');
+                        inputWrapper.classList.add('shake');
+                        setTimeout(() => inputWrapper.classList.remove('shake'), 500);
+                    }
+                }
+            });
+        }
+
+        function copyCommand() {
+            const cmd = document.getElementById('installCommand').textContent;
+            navigator.clipboard.writeText(cmd).then(() => {
+                const copyBtn = document.querySelector('.copy-btn');
+                const orig = copyBtn.textContent;
+                copyBtn.textContent = '✓ Copied!';
+                copyBtn.style.background = 'var(--green)';
+                copyBtn.style.color = '#000';
+                setTimeout(() => {
+                    copyBtn.textContent = orig;
+                    copyBtn.style.background = '';
+                    copyBtn.style.color = '';
+                }, 2000);
+            });
         }
     </script>
 </body>

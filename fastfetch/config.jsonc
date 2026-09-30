@@ -1,7 +1,7 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        "type": "image",
+        "type": "auto",
         "source": "~/.config/omarchy/themes/asanagi/backgrounds/avatar.jpg",
         "width": 20,
         "height": 10,
@@ -21,7 +21,7 @@
     "modules": [
         {
             "type": "title",
-            "format": "{user-name-colored} @ {host-name-colored}"
+            "format": "{6} @ {8}"
         },
         "break",
         {
