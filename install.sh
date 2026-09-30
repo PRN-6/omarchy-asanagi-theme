@@ -32,9 +32,6 @@ cp "$SCRIPT_DIR/colors.toml" "$OMARCHY_THEMES_DIR/"
 if [ -d "$SCRIPT_DIR/backgrounds" ]; then
     cp -r "$SCRIPT_DIR/backgrounds/"* "$OMARCHY_THEMES_DIR/backgrounds/"
 fi
-if [ -d "$SCRIPT_DIR/asanagi" ]; then
-    cp -r "$SCRIPT_DIR/asanagi/"* "$OMARCHY_THEMES_DIR/backgrounds/"
-fi
 
 # 3. Copy application configs
 mkdir -p "$OMARCHY_THEMES_DIR/hypr"
@@ -49,6 +46,8 @@ mkdir -p "$OMARCHY_THEMES_DIR/fastfetch"
 mkdir -p "$OMARCHY_THEMES_DIR/starship"
 
 [ -f "$SCRIPT_DIR/hyprland.conf" ] && cp "$SCRIPT_DIR/hyprland.conf" "$OMARCHY_THEMES_DIR/hypr/"
+[ -f "$SCRIPT_DIR/hyprlock.conf" ] && cp "$SCRIPT_DIR/hyprlock.conf" "$OMARCHY_THEMES_DIR/hypr/"
+[ -f "$SCRIPT_DIR/hyprlock.conf" ] && cp "$SCRIPT_DIR/hyprlock.conf" "$OMARCHY_THEMES_DIR/"
 [ -d "$SCRIPT_DIR/waybar" ] && cp -r "$SCRIPT_DIR/waybar/"* "$OMARCHY_THEMES_DIR/waybar/"
 [ -d "$SCRIPT_DIR/kitty" ] && cp -r "$SCRIPT_DIR/kitty/"* "$OMARCHY_THEMES_DIR/kitty/"
 [ -d "$SCRIPT_DIR/ghostty" ] && cp -r "$SCRIPT_DIR/ghostty/"* "$OMARCHY_THEMES_DIR/ghostty/"

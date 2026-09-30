@@ -6,7 +6,7 @@
     <title>Asanagi Umi - Omarchy Dark Minimalist Theme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #13091f;
@@ -71,6 +71,37 @@
             color: var(--fg-muted);
         }
 
+        .controls {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .toggle-group {
+            display: flex;
+            background: var(--bg-dark);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--fg-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
         .wall-selector {
             display: flex;
             gap: 6px;
@@ -116,6 +147,7 @@
             display: flex;
             flex-direction: column;
             transition: background-image 0.3s ease-in-out;
+            position: relative;
         }
 
         /* Minimalist Text-Only Waybar */
@@ -208,7 +240,7 @@
             line-height: 1.6;
         }
 
-        /* Text Minimalist Fetch */
+        /* Fastfetch with Avatar */
         .fetch-line {
             display: flex;
             gap: 12px;
@@ -265,6 +297,68 @@
         .fill-cpu { width: 38%; background: var(--accent); }
         .fill-mem { width: 55%; background: var(--ruby); }
         .fill-net { width: 28%; background: var(--cyan); }
+
+        /* Lock Screen View */
+        .lockscreen-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(19, 9, 31, 0.75);
+            backdrop-filter: blur(28px);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+
+        .lock-clock {
+            font-size: 4.8rem;
+            font-weight: 800;
+            color: var(--fg-bright);
+            letter-spacing: 2px;
+            text-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
+            line-height: 1;
+        }
+
+        .lock-date {
+            font-size: 1.1rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
+
+        .lock-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 24px var(--accent-glow);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .lock-input {
+            width: 260px;
+            background: rgba(31, 16, 51, 0.85);
+            border: 2px solid var(--accent);
+            border-radius: 25px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--fg-muted);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .lock-sub {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: var(--fg-muted);
+            letter-spacing: 1px;
+        }
 
         /* Specs section */
         .theme-specs {
@@ -337,12 +431,19 @@
             <p>Minimalist Dark Omarchy Theme</p>
         </div>
 
-        <div class="wall-selector">
-            <span style="font-size: 0.75rem; color: var(--fg-muted);">Wallpaper:</span>
-            <button class="wall-btn active" onclick="setWallpaper('./backgrounds/default.jpg', this)">Main</button>
-            <button class="wall-btn" onclick="setWallpaper('./backgrounds/card_ui.jpg', this)">Card UI</button>
-            <button class="wall-btn" onclick="setWallpaper('./backgrounds/manga_minimal.jpg', this)">Manga Ruby</button>
-            <button class="wall-btn" onclick="setWallpaper('./backgrounds/portrait.jpg', this)">Portrait</button>
+        <div class="controls">
+            <div class="toggle-group">
+                <button class="toggle-btn active" id="btnDesktop" onclick="showView('desktop')">Desktop</button>
+                <button class="toggle-btn" id="btnLock" onclick="showView('lockscreen')">Lock Screen</button>
+            </div>
+
+            <div class="wall-selector">
+                <span style="font-size: 0.75rem; color: var(--fg-muted);">Wallpaper:</span>
+                <button class="wall-btn active" onclick="setWallpaper('./backgrounds/default.jpg', this)">Main</button>
+                <button class="wall-btn" onclick="setWallpaper('./backgrounds/card_ui.jpg', this)">Card UI</button>
+                <button class="wall-btn" onclick="setWallpaper('./backgrounds/manga_minimal.jpg', this)">Manga Ruby</button>
+                <button class="wall-btn" onclick="setWallpaper('./backgrounds/portrait.jpg', this)">Portrait</button>
+            </div>
         </div>
     </header>
 
@@ -382,12 +483,17 @@
                         <span>asanagi</span>
                     </div>
                     <div class="win-content">
-                        <div style="color: var(--accent); font-weight: 600; margin-bottom: 6px;">prins @ omarchy</div>
-                        <div class="fetch-line"><span class="fetch-key">os</span><span class="fetch-val">Omarchy Linux</span></div>
-                        <div class="fetch-line"><span class="fetch-key">wm</span><span class="fetch-val">Hyprland</span></div>
-                        <div class="fetch-line"><span class="fetch-key">term</span><span class="fetch-val">Kitty / Ghostty</span></div>
-                        <div class="fetch-line"><span class="fetch-key">theme</span><span class="fetch-val" style="color: var(--accent);">asanagi</span></div>
-                        <div class="fetch-line"><span class="fetch-key">up</span><span class="fetch-val">3h 42m</span></div>
+                        <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+                            <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" style="width: 105px; height: 105px; border-radius: 8px; border: 2px solid var(--accent); box-shadow: 0 0 12px var(--accent-glow); object-fit: cover;">
+                            <div>
+                                <div style="color: var(--accent); font-weight: 600; margin-bottom: 4px;">prins @ omarchy</div>
+                                <div class="fetch-line"><span class="fetch-key">os</span><span class="fetch-val">Omarchy Linux</span></div>
+                                <div class="fetch-line"><span class="fetch-key">wm</span><span class="fetch-val">Hyprland</span></div>
+                                <div class="fetch-line"><span class="fetch-key">term</span><span class="fetch-val">Kitty / Ghostty</span></div>
+                                <div class="fetch-line"><span class="fetch-key">theme</span><span class="fetch-val" style="color: var(--accent);">asanagi</span></div>
+                                <div class="fetch-line"><span class="fetch-key">up</span><span class="fetch-val">3h 42m</span></div>
+                            </div>
+                        </div>
 
                         <div class="color-palette-bar">
                             <div class="swatch" style="background: #190c29;"></div>
@@ -444,6 +550,16 @@
                 </div>
 
             </div>
+
+            <!-- Hyprlock Lock Screen Simulation -->
+            <div class="lockscreen-overlay" id="lockScreen">
+                <div class="lock-clock">21:30</div>
+                <div class="lock-date">Wednesday, September 30</div>
+                <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="lock-avatar">
+                <div class="lock-input">•••••••••••••</div>
+                <div class="lock-sub">朝凪海 • Asanagi Umi</div>
+            </div>
+
         </div>
 
         <!-- Palette Specs -->
@@ -505,6 +621,22 @@
             document.getElementById('desktopView').style.backgroundImage = `url('${url}')`;
             document.querySelectorAll('.wall-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
+        }
+
+        function showView(view) {
+            const lock = document.getElementById('lockScreen');
+            const btnDesktop = document.getElementById('btnDesktop');
+            const btnLock = document.getElementById('btnLock');
+
+            if (view === 'lockscreen') {
+                lock.style.display = 'flex';
+                btnLock.classList.add('active');
+                btnDesktop.classList.remove('active');
+            } else {
+                lock.style.display = 'none';
+                btnDesktop.classList.add('active');
+                btnLock.classList.remove('active');
+            }
         }
     </script>
 </body>
