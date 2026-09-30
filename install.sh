@@ -9,7 +9,7 @@ THEME_NAME="asanagi"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OMARCHY_THEMES_DIR="$HOME/.config/omarchy/themes/$THEME_NAME"
 
-echo -e "\033[38;2;184;114;232m"
+echo -e "\033[38;2;168;85;247m"
 cat << "EOF"
     ___                                  _   __  __          _ 
    /   |  _________ _____  ____ _____ _ (_) / / / /___ ___  (_)
@@ -21,17 +21,14 @@ cat << "EOF"
 EOF
 echo -e "\033[0m"
 
-echo -e "\033[38;2;129;140;248m[*] Installing Asanagi theme files...\033[0m"
+echo -e "\033[38;2;129;140;248m[*] Installing Asanagi minimalist theme files...\033[0m"
 
 # 1. Ensure target theme directory exists
 mkdir -p "$OMARCHY_THEMES_DIR"
 mkdir -p "$OMARCHY_THEMES_DIR/backgrounds"
 
-# 2. Copy colors.toml and assets
+# 2. Copy colors.toml and backgrounds
 cp "$SCRIPT_DIR/colors.toml" "$OMARCHY_THEMES_DIR/"
-if [ -f "$SCRIPT_DIR/icons.theme" ]; then
-    cp "$SCRIPT_DIR/icons.theme" "$OMARCHY_THEMES_DIR/"
-fi
 if [ -d "$SCRIPT_DIR/backgrounds" ]; then
     cp -r "$SCRIPT_DIR/backgrounds/"* "$OMARCHY_THEMES_DIR/backgrounds/"
 fi
@@ -39,7 +36,7 @@ if [ -d "$SCRIPT_DIR/asanagi" ]; then
     cp -r "$SCRIPT_DIR/asanagi/"* "$OMARCHY_THEMES_DIR/backgrounds/"
 fi
 
-# 3. Copy application configs if available
+# 3. Copy application configs
 mkdir -p "$OMARCHY_THEMES_DIR/hypr"
 mkdir -p "$OMARCHY_THEMES_DIR/waybar"
 mkdir -p "$OMARCHY_THEMES_DIR/kitty"
@@ -66,10 +63,10 @@ echo -e "\033[38;2;74;222;128m[✓] Theme copied to: $OMARCHY_THEMES_DIR\033[0m"
 
 # 4. Apply via Omarchy Theme Engine if installed
 if command -v omarchy >/dev/null 2>&1; then
-    echo -e "\033[38;2;184;114;232m[*] Activating theme via Omarchy CLI...\033[0m"
+    echo -e "\033[38;2;168;85;247m[*] Activating theme via Omarchy CLI...\033[0m"
     omarchy theme set "$THEME_NAME" || omarchy-theme-set "$THEME_NAME" || true
 elif command -v omarchy-theme-set >/dev/null 2>&1; then
-    echo -e "\033[38;2;184;114;232m[*] Activating theme via omarchy-theme-set...\033[0m"
+    echo -e "\033[38;2;168;85;247m[*] Activating theme via omarchy-theme-set...\033[0m"
     omarchy-theme-set "$THEME_NAME" || true
 else
     echo -e "\033[38;2;250;204;21m[!] Omarchy CLI not detected. Deploying standalone config links...\033[0m"
@@ -89,7 +86,7 @@ else
     [ -f "$SCRIPT_DIR/mako/config" ] && cp "$SCRIPT_DIR/mako/config" "$HOME/.config/mako/config"
     [ -f "$SCRIPT_DIR/rofi/asanagi.rasi" ] && cp "$SCRIPT_DIR/rofi/asanagi.rasi" "$HOME/.config/rofi/config.rasi"
 
-    # Set Wallpaper if hyprpaper/swww exists
+    # Set Wallpaper if swww exists
     WALLPAPER="$SCRIPT_DIR/backgrounds/default.jpg"
     if command -v swww >/dev/null 2>&1; then
         swww img "$WALLPAPER" --transition-type wipe --transition-angle 30 --transition-step 90 || true
@@ -98,6 +95,6 @@ fi
 
 echo -e "\033[38;2;244;63;110m"
 echo "========================================================"
-echo "  🌸 Asanagi Theme successfully installed & activated! "
+echo "  Asanagi Minimalist Theme successfully installed!      "
 echo "========================================================"
 echo -e "\033[0m"

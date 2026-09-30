@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asanagi Umi - Omarchy Dark Minimalist Theme Preview</title>
+    <title>Asanagi Umi - Omarchy Dark Minimalist Theme</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-base: #13091f;
@@ -14,9 +14,9 @@
             --bg-darker: #08030d;
             --bg-lighter: #1f1033;
             --accent: #a855f7;
-            --accent-glow: rgba(168, 85, 247, 0.45);
+            --accent-glow: rgba(168, 85, 247, 0.4);
             --ruby: #f43f6e;
-            --ruby-glow: rgba(244, 63, 110, 0.4);
+            --ruby-glow: rgba(244, 63, 110, 0.35);
             --fg: #e9d5ff;
             --fg-muted: #9d8ba7;
             --fg-bright: #faf5ff;
@@ -43,12 +43,12 @@
             overflow-x: hidden;
         }
 
-        /* Top Header Navigation */
+        /* Top Header */
         header {
-            background: rgba(19, 9, 31, 0.88);
+            background: rgba(19, 9, 31, 0.9);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.25);
-            padding: 12px 28px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -57,224 +57,167 @@
             z-index: 100;
         }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 14px var(--accent-glow);
-            object-fit: cover;
-        }
-
-        .brand-text h1 {
-            font-size: 1.15rem;
+        .brand h1 {
+            font-size: 1.05rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #faf5ff, var(--accent), var(--ruby));
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #faf5ff, var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .brand-text p {
-            font-size: 0.78rem;
+        .brand p {
+            font-size: 0.75rem;
             color: var(--fg-muted);
-            letter-spacing: 0.5px;
         }
 
         .wall-selector {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             align-items: center;
         }
 
         .wall-btn {
-            background: rgba(31, 16, 51, 0.85);
-            border: 1px solid rgba(168, 85, 247, 0.28);
+            background: var(--bg-lighter);
+            border: 1px solid rgba(168, 85, 247, 0.25);
             color: var(--fg);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.82rem;
-            font-weight: 600;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
         }
 
         .wall-btn:hover, .wall-btn.active {
-            background: linear-gradient(135deg, var(--accent), var(--ruby));
+            background: var(--accent);
             border-color: transparent;
             color: #ffffff;
-            box-shadow: 0 0 14px var(--accent-glow);
+            box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* Desktop Simulation Stage */
+        /* Desktop Stage */
         .desktop-stage {
             flex: 1;
-            padding: 24px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            position: relative;
         }
 
         .sim-desktop {
             flex: 1;
-            min-height: 620px;
-            border-radius: 16px;
+            min-height: 580px;
+            border-radius: 12px;
             overflow: hidden;
-            border: 2px solid rgba(168, 85, 247, 0.4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(168, 85, 247, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
-            position: relative;
-            transition: background-image 0.4s ease-in-out;
+            transition: background-image 0.3s ease-in-out;
         }
 
-        /* Simulated Waybar */
+        /* Minimalist Text-Only Waybar */
         .sim-waybar {
-            height: 36px;
-            background: rgba(19, 9, 31, 0.85);
+            height: 32px;
+            background: rgba(19, 9, 31, 0.88);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.28);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 12px;
             font-family: 'Fira Code', monospace;
-            font-size: 12px;
+            font-size: 11px;
             z-index: 10;
         }
 
         .waybar-group {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
-        .pill {
-            background: rgba(31, 16, 51, 0.72);
-            border: 1px solid rgba(168, 85, 247, 0.22);
-            padding: 3px 10px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .ws-num {
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: var(--fg-muted);
         }
 
-        .pill.active-pill {
-            background: linear-gradient(135deg, var(--accent), var(--ruby));
-            color: #fff;
-            box-shadow: 0 0 12px var(--accent-glow);
+        .ws-num.active {
+            background: var(--accent);
+            color: #ffffff;
         }
 
-        .pill.clock {
-            background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(244, 63, 110, 0.22));
-            border-color: rgba(168, 85, 247, 0.45);
-            font-weight: 700;
+        .bar-item {
+            background: rgba(31, 16, 51, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--fg);
+        }
+
+        .bar-item.clock {
+            color: var(--fg-bright);
+            font-weight: 600;
         }
 
         /* Windows Canvas */
         .windows-grid {
             flex: 1;
-            padding: 16px;
+            padding: 14px;
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 16px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 14px;
         }
 
-        /* Simulated Hyprland Window */
         .sim-window {
             background: rgba(19, 9, 31, 0.94);
-            backdrop-filter: blur(24px);
-            border-radius: 12px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            box-shadow: 0 12px 32px rgba(8, 3, 13, 0.75);
+            backdrop-filter: blur(20px);
+            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            box-shadow: 0 10px 25px rgba(8, 3, 13, 0.7);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            position: relative;
         }
 
         .sim-window.active {
-            border: 2px solid var(--accent);
-            box-shadow: 0 0 24px var(--accent-glow), 0 16px 40px rgba(0, 0, 0, 0.85);
-        }
-
-        .win-titlebar {
-            background: rgba(31, 16, 51, 0.8);
-            padding: 8px 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
-            font-family: 'Fira Code', monospace;
-            font-size: 0.78rem;
-        }
-
-        .win-controls {
-            display: flex;
-            gap: 6px;
-        }
-
-        .win-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .dot-close { background: var(--ruby); }
-        .dot-min { background: var(--yellow); }
-        .dot-max { background: var(--green); }
-
-        .win-content {
-            flex: 1;
-            padding: 16px;
-            font-family: 'Fira Code', monospace;
-            font-size: 13px;
-            line-height: 1.55;
-            overflow-y: auto;
-        }
-
-        /* Fastfetch Visualizer */
-        .fastfetch-box {
-            display: flex;
-            gap: 20px;
-        }
-
-        .fastfetch-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 10px;
-            border: 2px solid var(--accent);
-            object-fit: cover;
+            border-color: var(--accent);
             box-shadow: 0 0 16px var(--accent-glow);
         }
 
-        .fetch-info {
+        .win-titlebar {
+            background: rgba(31, 16, 51, 0.75);
+            padding: 6px 12px;
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.72rem;
+            color: var(--fg-muted);
         }
 
-        .fetch-title {
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 4px;
+        .win-content {
+            flex: 1;
+            padding: 14px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12.5px;
+            line-height: 1.6;
         }
 
+        /* Text Minimalist Fetch */
         .fetch-line {
             display: flex;
-            gap: 8px;
+            gap: 12px;
+            margin-bottom: 2px;
         }
 
         .fetch-key {
             color: var(--accent);
-            width: 90px;
+            width: 45px;
             font-weight: 600;
         }
 
@@ -284,129 +227,101 @@
 
         .color-palette-bar {
             display: flex;
-            gap: 6px;
-            margin-top: 10px;
+            gap: 5px;
+            margin-top: 12px;
         }
 
         .swatch {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
         }
 
         /* BTOP Monitor */
         .btop-stat {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .btop-label {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
-            margin-bottom: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 3px;
             color: var(--fg-bright);
         }
 
         .btop-bar {
-            height: 8px;
+            height: 6px;
             background: var(--bg-lighter);
-            border-radius: 4px;
+            border-radius: 3px;
             overflow: hidden;
-            position: relative;
         }
 
         .btop-fill {
             height: 100%;
-            border-radius: 4px;
+            border-radius: 3px;
         }
 
-        .fill-cpu { width: 42%; background: linear-gradient(90deg, var(--blue), var(--accent), var(--ruby)); }
-        .fill-mem { width: 68%; background: linear-gradient(90deg, var(--green), var(--yellow), var(--ruby)); }
-        .fill-net { width: 35%; background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+        .fill-cpu { width: 38%; background: var(--accent); }
+        .fill-mem { width: 55%; background: var(--ruby); }
+        .fill-net { width: 28%; background: var(--cyan); }
 
-        /* Color Hex Table */
+        /* Specs section */
         .theme-specs {
             background: var(--bg-base);
-            border-radius: 14px;
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            padding: 20px;
-            margin-top: 24px;
+            border-radius: 10px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            padding: 16px 20px;
+            margin-top: 16px;
         }
 
         .theme-specs h2 {
-            font-size: 1.2rem;
-            margin-bottom: 14px;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
             color: var(--fg-bright);
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .swatch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 10px;
         }
 
         .swatch-card {
             background: var(--bg-dark);
-            border: 1px solid rgba(168, 85, 247, 0.18);
-            padding: 10px;
-            border-radius: 8px;
+            border: 1px solid rgba(168, 85, 247, 0.15);
+            padding: 8px 10px;
+            border-radius: 6px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .swatch-color {
-            height: 32px;
-            border-radius: 6px;
+            height: 24px;
+            border-radius: 4px;
         }
 
         .swatch-name {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             color: var(--fg-muted);
         }
 
         .swatch-hex {
             font-family: 'Fira Code', monospace;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             color: var(--fg-bright);
-            font-weight: 700;
-        }
-
-        .character-breakdown {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .char-item {
-            background: var(--bg-lighter);
-            padding: 12px;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .char-item h4 {
-            font-size: 0.85rem;
-            color: var(--fg-bright);
-            margin-bottom: 4px;
-        }
-
-        .char-item p {
-            font-size: 0.75rem;
-            color: var(--fg-muted);
+            font-weight: 600;
         }
 
         .install-box {
             background: var(--bg-dark);
-            border: 1px dashed rgba(168, 85, 247, 0.45);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-top: 16px;
+            border: 1px dashed rgba(168, 85, 247, 0.35);
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-top: 14px;
             font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
             color: var(--accent);
             display: flex;
             align-items: center;
@@ -418,16 +333,13 @@
 
     <header>
         <div class="brand">
-            <img src="./backgrounds/avatar.jpg" alt="Asanagi Umi" class="avatar">
-            <div class="brand-text">
-                <h1>Asanagi Umi (朝凪海)</h1>
-                <p>Omarchy OS / Hyprland Dark Minimalist Theme</p>
-            </div>
+            <h1>Asanagi Umi (朝凪海)</h1>
+            <p>Minimalist Dark Omarchy Theme</p>
         </div>
 
         <div class="wall-selector">
-            <span style="font-size: 0.82rem; color: var(--fg-muted);">Wallpaper:</span>
-            <button class="wall-btn active" onclick="setWallpaper('./backgrounds/default.jpg', this)">Main (朝凪海)</button>
+            <span style="font-size: 0.75rem; color: var(--fg-muted);">Wallpaper:</span>
+            <button class="wall-btn active" onclick="setWallpaper('./backgrounds/default.jpg', this)">Main</button>
             <button class="wall-btn" onclick="setWallpaper('./backgrounds/card_ui.jpg', this)">Card UI</button>
             <button class="wall-btn" onclick="setWallpaper('./backgrounds/manga_minimal.jpg', this)">Manga Ruby</button>
             <button class="wall-btn" onclick="setWallpaper('./backgrounds/portrait.jpg', this)">Portrait</button>
@@ -438,26 +350,25 @@
         <!-- Simulated Desktop -->
         <div class="sim-desktop" id="desktopView" style="background-image: url('./backgrounds/default.jpg');">
             
-            <!-- Simulated Waybar -->
+            <!-- Simulated Minimalist Waybar -->
             <div class="sim-waybar">
                 <div class="waybar-group">
-                    <div class="pill" style="color: var(--ruby); font-weight: 800;">🌸</div>
-                    <div class="pill active-pill">1</div>
-                    <div class="pill">2</div>
-                    <div class="pill">3</div>
-                    <div class="pill">4</div>
-                    <span style="color: var(--accent); margin-left: 8px; font-size: 11px;">~ / omarchy-theme</span>
+                    <span class="ws-num active">1</span>
+                    <span class="ws-num">2</span>
+                    <span class="ws-num">3</span>
+                    <span class="ws-num">4</span>
+                    <span style="color: var(--accent); margin-left: 10px;">~/omarchy-theme</span>
                 </div>
 
                 <div class="waybar-group">
-                    <div class="pill clock"> 21:30  Wed, Sep 30</div>
+                    <span class="bar-item clock">21:30  •  Wed, Sep 30</span>
                 </div>
 
                 <div class="waybar-group">
-                    <div class="pill" style="color: var(--blue);"> 78%</div>
-                    <div class="pill" style="color: var(--cyan);"> Connected</div>
-                    <div class="pill" style="color: var(--green);"> 98%</div>
-                    <div class="pill" style="background: linear-gradient(135deg, var(--ruby), var(--accent)); color: #fff;"></div>
+                    <span class="bar-item" style="color: var(--blue);">vol 78%</span>
+                    <span class="bar-item" style="color: var(--cyan);">wifi</span>
+                    <span class="bar-item" style="color: var(--green);">bat 98%</span>
+                    <span class="bar-item" style="color: var(--ruby);">off</span>
                 </div>
             </div>
 
@@ -467,36 +378,30 @@
                 <!-- Terminal Window -->
                 <div class="sim-window active">
                     <div class="win-titlebar">
-                        <div class="win-controls">
-                            <div class="win-dot dot-close"></div>
-                            <div class="win-dot dot-min"></div>
-                            <div class="win-dot dot-max"></div>
-                        </div>
-                        <div>kitty - fastfetch</div>
-                        <div style="color: var(--accent);">🌸 Asanagi</div>
+                        <span>term / fastfetch</span>
+                        <span>asanagi</span>
                     </div>
                     <div class="win-content">
-                        <div class="fastfetch-box">
-                            <img src="./backgrounds/avatar.jpg" alt="Avatar" class="fastfetch-avatar">
-                            <div class="fetch-info">
-                                <div class="fetch-title">prins@omarchy [Asanagi Umi]</div>
-                                <div class="fetch-line"><span class="fetch-key">󰣇 OS</span> <span class="fetch-val">Omarchy Linux (x86_64)</span></div>
-                                <div class="fetch-line"><span class="fetch-key"> WM</span> <span class="fetch-val">Hyprland (Wayland)</span></div>
-                                <div class="fetch-line"><span class="fetch-key"> Terminal</span> <span class="fetch-val">Kitty / Ghostty</span></div>
-                                <div class="fetch-line"><span class="fetch-key">🎨 Theme</span> <span class="fetch-val" style="color: var(--accent); font-weight: bold;">asanagi-dark</span></div>
-                                <div class="fetch-line"><span class="fetch-key">󰅐 Uptime</span> <span class="fetch-val">3 hours, 42 mins</span></div>
+                        <div style="color: var(--accent); font-weight: 600; margin-bottom: 6px;">prins @ omarchy</div>
+                        <div class="fetch-line"><span class="fetch-key">os</span><span class="fetch-val">Omarchy Linux</span></div>
+                        <div class="fetch-line"><span class="fetch-key">wm</span><span class="fetch-val">Hyprland</span></div>
+                        <div class="fetch-line"><span class="fetch-key">term</span><span class="fetch-val">Kitty / Ghostty</span></div>
+                        <div class="fetch-line"><span class="fetch-key">theme</span><span class="fetch-val" style="color: var(--accent);">asanagi</span></div>
+                        <div class="fetch-line"><span class="fetch-key">up</span><span class="fetch-val">3h 42m</span></div>
 
-                                <div class="color-palette-bar">
-                                    <div class="swatch" style="background: #190c29;"></div>
-                                    <div class="swatch" style="background: #f43f6e;"></div>
-                                    <div class="swatch" style="background: #4ade80;"></div>
-                                    <div class="swatch" style="background: #facc15;"></div>
-                                    <div class="swatch" style="background: #818cf8;"></div>
-                                    <div class="swatch" style="background: #c084fc;"></div>
-                                    <div class="swatch" style="background: #38bdf8;"></div>
-                                    <div class="swatch" style="background: #e9d5ff;"></div>
-                                </div>
-                            </div>
+                        <div class="color-palette-bar">
+                            <div class="swatch" style="background: #190c29;"></div>
+                            <div class="swatch" style="background: #f43f6e;"></div>
+                            <div class="swatch" style="background: #4ade80;"></div>
+                            <div class="swatch" style="background: #facc15;"></div>
+                            <div class="swatch" style="background: #818cf8;"></div>
+                            <div class="swatch" style="background: #c084fc;"></div>
+                            <div class="swatch" style="background: #38bdf8;"></div>
+                            <div class="swatch" style="background: #e9d5ff;"></div>
+                        </div>
+
+                        <div style="margin-top: 14px; color: var(--fg-muted); font-size: 11px;">
+                            ~/omarchy-theme on main <span style="color: var(--accent);">❯</span>
                         </div>
                     </div>
                 </div>
@@ -504,41 +409,36 @@
                 <!-- Btop Window -->
                 <div class="sim-window">
                     <div class="win-titlebar">
-                        <div class="win-controls">
-                            <div class="win-dot dot-close"></div>
-                            <div class="win-dot dot-min"></div>
-                            <div class="win-dot dot-max"></div>
-                        </div>
-                        <div>btop - system monitor</div>
-                        <div style="color: var(--cyan);">4.2 GHz</div>
+                        <span>btop / monitor</span>
+                        <span>4.2 GHz</span>
                     </div>
                     <div class="win-content">
                         <div class="btop-stat">
                             <div class="btop-label">
-                                <span>CPU Usage (AMD Ryzen 7)</span>
-                                <span style="color: var(--accent);">42%</span>
+                                <span>cpu</span>
+                                <span style="color: var(--accent);">38%</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-cpu"></div></div>
                         </div>
 
                         <div class="btop-stat">
                             <div class="btop-label">
-                                <span>Memory (10.8 GB / 16 GB)</span>
-                                <span style="color: var(--green);">68%</span>
+                                <span>mem (8.8G / 16G)</span>
+                                <span style="color: var(--ruby);">55%</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-mem"></div></div>
                         </div>
 
                         <div class="btop-stat">
                             <div class="btop-label">
-                                <span>Network (Download / Upload)</span>
-                                <span style="color: var(--cyan);">↓ 12.4 MB/s  ↑ 1.8 MB/s</span>
+                                <span>net</span>
+                                <span style="color: var(--cyan);">↓ 12M  ↑ 1.8M</span>
                             </div>
                             <div class="btop-bar"><div class="btop-fill fill-net"></div></div>
                         </div>
 
-                        <div style="margin-top: 14px; font-size: 0.75rem; color: var(--fg-muted);">
-                            [Process Manager] Hyprland (1.2%) • Waybar (0.4%) • Kitty (0.8%)
+                        <div style="margin-top: 10px; font-size: 0.72rem; color: var(--fg-muted);">
+                            proc: hyprland • waybar • kitty
                         </div>
                     </div>
                 </div>
@@ -546,75 +446,54 @@
             </div>
         </div>
 
-        <!-- Color Swatch Reference Specs -->
+        <!-- Palette Specs -->
         <div class="theme-specs">
-            <h2>🌸 Character Color Harmonization</h2>
-            
-            <div class="character-breakdown">
-                <div class="char-item" style="border-left-color: #a855f7;">
-                    <h4>Bangs & UI Accent (#a855f7)</h4>
-                    <p>Electric Orchid Purple from Umi's front hair highlight & wallpaper UI</p>
-                </div>
-                <div class="char-item" style="border-left-color: #f43f6e;">
-                    <h4>Ruby Eyes Accent (#f43f6e)</h4>
-                    <p>Vivid Ruby Crimson Scarlet from Umi's signature expressive eyes</p>
-                </div>
-                <div class="char-item" style="border-left-color: #13091f;">
-                    <h4>Midnight Obsidian (#13091f)</h4>
-                    <p>Deep Indigo Charcoal plum background from hair base & wallpaper cards</p>
-                </div>
-                <div class="char-item" style="border-left-color: #38bdf8;">
-                    <h4>Sky Ribbon Blue (#38bdf8)</h4>
-                    <p>Sky Azure from the school uniform tie & shark hoodie</p>
-                </div>
-            </div>
-
-            <h3 style="margin-top: 20px; font-size: 1rem; color: var(--fg-bright);">Palette Tokens (colors.toml)</h3>
-            <div class="swatch-grid" style="margin-top: 10px;">
+            <h2>Palette Reference (colors.toml)</h2>
+            <div class="swatch-grid">
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #13091f;"></div>
-                    <span class="swatch-name">Background</span>
+                    <span class="swatch-name">background</span>
                     <span class="swatch-hex">#13091f</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #a855f7;"></div>
-                    <span class="swatch-name">Accent (Purple)</span>
+                    <span class="swatch-name">accent (purple)</span>
                     <span class="swatch-hex">#a855f7</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #f43f6e;"></div>
-                    <span class="swatch-name">Ruby Eyes (Red)</span>
+                    <span class="swatch-name">ruby (red)</span>
                     <span class="swatch-hex">#f43f6e</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #3b1d5c;"></div>
-                    <span class="swatch-name">Selection</span>
+                    <span class="swatch-name">selection</span>
                     <span class="swatch-hex">#3b1d5c</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #818cf8;"></div>
-                    <span class="swatch-name">Indigo Tint</span>
+                    <span class="swatch-name">indigo</span>
                     <span class="swatch-hex">#818cf8</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #38bdf8;"></div>
-                    <span class="swatch-name">Sky Ribbon Cyan</span>
+                    <span class="swatch-name">cyan</span>
                     <span class="swatch-hex">#38bdf8</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #4ade80;"></div>
-                    <span class="swatch-name">Emerald Mint</span>
+                    <span class="swatch-name">green</span>
                     <span class="swatch-hex">#4ade80</span>
                 </div>
                 <div class="swatch-card">
                     <div class="swatch-color" style="background: #e9d5ff;"></div>
-                    <span class="swatch-name">Lavender Text</span>
+                    <span class="swatch-name">foreground</span>
                     <span class="swatch-hex">#e9d5ff</span>
                 </div>
             </div>
 
             <div class="install-box">
-                <span>⚡ Install via Omarchy Terminal:</span>
+                <span>Install via Omarchy Terminal:</span>
                 <code>omarchy-theme-install https://github.com/PRN-6/omarchy-asanagi-theme</code>
             </div>
         </div>

@@ -1,15 +1,15 @@
 /* -----------------------------------------------------
- * Asanagi Umi Theme - Rofi / App Launcher
+ * Asanagi Umi Theme - Ultra Minimalist Text Launcher
  * ----------------------------------------------------- */
 
 * {
-    background: #130f1b;
-    background-alt: #1e182b;
-    foreground: #ddd6eb;
-    selected: #b872e8;
+    background: #13091f;
+    background-alt: #1f1033;
+    foreground: #e9d5ff;
+    selected: #a855f7;
     active: #f43f6e;
-    urgent: #fb7185;
-    border-color: #3b2c52;
+    urgent: #ff4d6d;
+    border-color: #3b1d5c;
     
     font: "JetBrainsMono Nerd Font 11";
 }
@@ -18,17 +18,17 @@ window {
     transparency: "real";
     background-color: @background;
     text-color: @foreground;
-    border: 2px solid;
+    border: 1px solid;
     border-color: @selected;
-    border-radius: 14px;
-    width: 600px;
-    padding: 16px;
+    border-radius: 8px;
+    width: 520px;
+    padding: 14px;
 }
 
 mainbox {
     background-color: transparent;
     children: [ inputbar, listview ];
-    spacing: 12px;
+    spacing: 10px;
 }
 
 inputbar {
@@ -36,52 +36,46 @@ inputbar {
     text-color: @foreground;
     border: 1px solid;
     border-color: @border-color;
-    border-radius: 10px;
-    padding: 10px 14px;
+    border-radius: 6px;
+    padding: 8px 12px;
     children: [ prompt, entry ];
 }
 
 prompt {
     background-color: transparent;
     text-color: @selected;
-    margin: 0 8px 0 0;
+    margin: 0 6px 0 0;
 }
 
 entry {
     background-color: transparent;
     text-color: @foreground;
-    placeholder: "Search applications or commands...";
-    placeholder-color: #877b9f;
+    placeholder: "type to search...";
+    placeholder-color: #9d8ba7;
 }
 
 listview {
     background-color: transparent;
     columns: 1;
-    lines: 7;
+    lines: 6;
     cycle: true;
     dynamic: true;
     scrollbar: false;
     layout: vertical;
-    spacing: 4px;
+    spacing: 2px;
 }
 
 element {
     background-color: transparent;
     text-color: @foreground;
     orientation: horizontal;
-    border-radius: 8px;
-    padding: 8px 12px;
+    border-radius: 4px;
+    padding: 6px 10px;
 }
 
 element selected.normal {
     background-color: @selected;
     text-color: #ffffff;
-}
-
-element-icon {
-    size: 24px;
-    margin: 0 10px 0 0;
-    background-color: transparent;
 }
 
 element-text {
