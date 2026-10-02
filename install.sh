@@ -66,9 +66,18 @@ echo -e "\033[38;2;74;222;128m[✓] Theme copied to: $OMARCHY_THEMES_DIR\033[0m"
 if command -v omarchy >/dev/null 2>&1; then
     echo -e "\033[38;2;168;85;247m[*] Activating theme via Omarchy CLI...\033[0m"
     omarchy theme set "$THEME_NAME" || omarchy-theme-set "$THEME_NAME" || true
+    # Ensure hyprlock & fastfetch avatar are also linked directly
+    mkdir -p "$HOME/.config/hypr" "$HOME/.config/fastfetch"
+    cp "$SCRIPT_DIR/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf" 2>/dev/null || true
+    cp "$SCRIPT_DIR/fastfetch/avatar.jpg" "$HOME/.config/fastfetch/avatar.jpg" 2>/dev/null || true
+    cp "$SCRIPT_DIR/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc" 2>/dev/null || true
 elif command -v omarchy-theme-set >/dev/null 2>&1; then
     echo -e "\033[38;2;168;85;247m[*] Activating theme via omarchy-theme-set...\033[0m"
     omarchy-theme-set "$THEME_NAME" || true
+    mkdir -p "$HOME/.config/hypr" "$HOME/.config/fastfetch"
+    cp "$SCRIPT_DIR/hyprlock.conf" "$HOME/.config/hypr/hyprlock.conf" 2>/dev/null || true
+    cp "$SCRIPT_DIR/fastfetch/avatar.jpg" "$HOME/.config/fastfetch/avatar.jpg" 2>/dev/null || true
+    cp "$SCRIPT_DIR/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc" 2>/dev/null || true
 else
     echo -e "\033[38;2;250;204;21m[!] Omarchy CLI not detected. Deploying standalone config links...\033[0m"
     mkdir -p "$HOME/.config/hypr"
